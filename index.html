@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De olho na lojinha</title>
+    <meta http-equiv="refresh" content="20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0px; 
+            padding: 0px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        #itens-list{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2vw;
+        }
+        .card{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: larger;
+            height: 15vh;
+        }
+        main{
+            width: 80vw;
+        }
+        .thumb{
+            border-radius: 10%;
+        }
+        .star{
+            color: #07058f;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header id="totais">
+        Itens: 00 | Disponível: 00
+    </header>
+    <main>
+        <div id="itens-list">
+            <!-- <div class="card">
+                <img class="thumb" src="https://cdn.streamelements.com/uploads/1c9c48f8-791a-456f-b252-4260c4abf5e2.png">
+                <span class="title">$ 5.000 - MP9 | Cadeia Alimentar</span>
+                <span class="qtd"> Total: 4 | Disponível: 1</span>
+            </div> -->
+        </div>
+    </main>
+        
+    <script src="app.js"></script>
+</body>
+</html>
