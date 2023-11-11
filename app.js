@@ -10,47 +10,55 @@ var currents = 0;
         data: dados,
         status: response.status
     })
-).then(res => { 
+    ).then(res => { 
     let data = res.data;
     console.log(data.length);
+    data.sort( function (a, b) { return b.quantity.current - a.quantity.current} )
+    let subSet = [];
     data.forEach(element => {
-        if(element.enabled){
+        if(element.enabled && element.subscriberOnly && element.quantity.current > 0){
             count++;
-            if(element.subscriberOnly)
-              updateCards(element);
+            updateCards(element);
         }
-    });
+      });
     if(count != Number(localStorage.getItem("total")) ){
-        localStorage.setItem("total", count);
-        notifyMe();
+      localStorage.setItem("total", count);
+      notifyMe();
     }
-    }));
+  }));
 
+      
   function updateCards(element){
     let card = document.createElement("div");
     card.classList.add('card');
+    
     let img = document.createElement("img");
     img.classList.add('thumb');
     img.src = element.thumbnail;
+    
     let title = document.createElement("span");
     title.classList.add('title');
-    const options = { minimumFractionDigits: 0 }
     title.innerText = `${element.name}`;
+    
     let subtitle = document.createElement("span");
     subtitle.classList.add('qtd');
+    const options = { minimumFractionDigits: 0 }
     subtitle.innerText = `Total: ${element.quantity.total} | Disponível: ${element.quantity.current} | $ ${new Intl.NumberFormat('pt-BR', options).format(parseFloat(element.cost))}`;
+    
     card.appendChild(img);
     card.appendChild(title);
     card.appendChild(subtitle);
     lista.appendChild(card);
+    
     const h1 = document.getElementById("totais");
+    h1.innerText = `Itens: ${Number(localStorage.getItem("total"))} | Disponível: ${currents}`;
+    
     if(element.quantity.current > 0){
       card.classList.add('star');
       currents++;
     }
-    h1.innerText = `Itens: ${Number(localStorage.getItem("total"))} | Disponível: ${currents}`;
   }
-
+  
   function notifyMe() {
     document.querySelector("body").style.background = "red";
     if (!("Notification" in window)) {
